@@ -36,17 +36,21 @@ export class Navbar extends Component {
     // }
 
     increase () {
+        if(this.state.max.length === this.state.end) return;
         this.setState({
             start : this.state.start + 1,
             end: this.state.end + 1,
 
         })
+        console.log(this.state.start, this.state.end)
     }
     decrease () {
+        if(this.state.start === 0) return;
         this.setState({
             end : this.state.end - 1,
-            start: this.state.start + 1,
+            start: this.state.start - 1,
         })
+        console.log(this.state.end, this.state.end);
     }
 
 
@@ -56,7 +60,7 @@ export class Navbar extends Component {
             <div>
            {/* {this.state.user && <ViewOne item={this.state.user} /> } */}
             <div style={{width: "100%", height: "100vh", display: "flex", flexWrap: "wrap", justifyContent:"center"}}>
-                    <button onClikc={() => this.decrease() }>decrease</button>
+                    <button onClick={() => this.decrease() }>decrease</button>
                 {
                     this.state.max.slice(this.state.start,this.state.end).map((item) => {
                         
